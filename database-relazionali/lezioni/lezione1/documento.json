@@ -1,0 +1,20 @@
+[{
+    "id": 1,
+    "nome": "Marcello",
+    "cognome": "Ferri",
+    "codice_fiscale": "FRRMRC80D03C004N"
+},
+{
+    "id": 2,
+    "nome": "Silvia",
+    "cognome": "FerMariniri",
+    "codice_fiscale": "MRNSLV90G45C004O"
+},
+{
+    "id": 3,
+    "nome": "Irene",
+    "cognome": "Fabrizi",
+    "codice_fiscale": "FBRIRN95L52C004U",
+    "citta": "Pesaro"
+}
+]

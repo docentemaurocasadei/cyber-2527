@@ -1,0 +1,14 @@
+clienti
+PK
+id      |nome       |cognome        |codice_fiscale     |citta
+1        Marcello    Ferri           FRRMRC80D03C004N    Ancona
+2        Silvia      Marini          MRNSLV90G45C004O    Fano
+3        Irene       Fabrizi         FBRIRN95L52C004U    Pesaro
+
+ordini
+PK                               FK
+id      |data       |importo    |cliente_id
+1        25/02/2026  22.35      |2
+2        24/02/2026  34.20       1
+
+
