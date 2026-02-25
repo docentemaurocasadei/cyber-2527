@@ -1,0 +1,145 @@
+Esercizio 1 – Sistema di Gestione Biblioteca
+🎯 Obiettivo dell’esercizio
+
+Progettare e utilizzare un database relazionale per la gestione di una biblioteca, in grado di:
+memorizzare i libri disponibili,
+gestire gli utenti iscritti,
+tracciare i prestiti dei libri nel tempo.
+
+L’esercizio prevede:
+la comprensione del modello dati (diagramma ER),
+l’inserimento dei dati,
+la modifica e gestione dei dati nel rispetto delle normative (GDPR).
+
+🧱 Struttura del database (diagramma ER – descrizione)
+
+Il database è composto da tre tabelle principali, collegate tra loro tramite chiavi primarie e chiavi esterne.
+📘 Tabella Libri
+Contiene le informazioni sui libri presenti in biblioteca.
+Campo	Descrizione
+id_libro (PK)	Identificativo univoco del libro
+titolo	Titolo del libro
+autore	Autore del libro
+genere	Genere letterario
+anno_pubblicazione	Anno di pubblicazione
+
+👤 Tabella Utenti
+Contiene i dati degli utenti iscritti alla biblioteca.
+Campo	Descrizione
+id_utente (PK)	Identificativo univoco dell’utente
+nome	Nome dell’utente
+cognome	Cognome dell’utente
+email	Indirizzo email
+telefono	Numero di telefono
+
+🔁 Tabella Prestiti
+
+id_prestito (PK)	Identificativo del prestito
+id_libro (FK)	Libro preso in prestito
+id_utente (FK)	Utente che prende il libro
+data_prestito	Data di inizio prestito
+data_restituzione_prevista	Data entro cui il libro va restituito
+data_restituzione_effettiva	Data reale di restituzione (NULL se non restituito)
+🔐 Vincoli logici del sistema
+
+Un libro può essere preso in prestito da un solo utente alla volta
+Questo significa che non possono esistere due prestiti attivi per lo stesso libro.
+Un utente può effettuare più prestiti nel tempo
+Lo stesso utente può prendere più libri o lo stesso libro in momenti diversi.
+
+🟢 Punto 1 – Insert e popolazione dei dati
+📌 Consegna
+Popolare il database inserendo almeno 20 record complessivi, distribuiti sulle tre tabelle.
+La popolazione deve rispettare le relazioni tra le tabelle (chiavi primarie e chiavi esterne).
+
+Quantità minime richieste:
+
+📘 Libri: almeno 10 record
+👤 Utenti: almeno 5 record
+🔁 Prestiti: almeno 5 record
+
+📌 Suggerimento:
+nei prestiti, lasciare data_restituzione_effettiva a NULL per simulare un prestito ancora attivo.
+
+
+
+🟡 Punto 2 – Modifica dei dati di un utente
+📌 Consegna
+
+Scrivere una query SQL per aggiornare i dati di un utente già esistente.
+In particolare:
+modificare l’indirizzo email
+modificare il numero di telefono
+
+📍 L’utente da aggiornare ha:
+id_utente = 2
+
+Nuovi valori:
+email = 'laura.bianchi@nuovamail.it'
+telefono = '3339990000'
+
+📌 Obiettivo didattico:
+imparare a usare correttamente l’istruzione UPDATE con la clausola WHERE.
+
+
+
+🔴 Punto 3 – Cancellazione utente per GDPR (anonimizzazione)
+Gestire la cancellazione di un utente nel rispetto del GDPR.
+👉 Non eliminare fisicamente il record dal database.
+👉 Anonimizzare i dati personali, mantenendo però i riferimenti ai prestiti effettuati.
+
+L’utente da anonimizzare ha:
+id_utente = 3
+
+Regole di anonimizzazione:
+nome → ANONIMO
+cognome → ANONIMO
+altri dati personali (email, telefono) → NULL
+
+📌 Obiettivo didattico:
+comprendere la differenza tra DELETE e anonimizzazione
+mantenere l’integrità dei dati storici
+
+
+
+
+Punto 4 – Select: utente che ha attualmente in prestito un libro (ricerca per titolo)
+📌 Consegna (descrizione migliorata)
+
+Scrivere una query SQL che, dato il titolo di un libro, restituisca i dati dell’utente che attualmente ha il libro in prestito.
+Un libro si considera attualmente in prestito se la data di restituzione effettiva è NULL.
+La query deve mostrare:
+Nome dell’utente
+Cognome dell’utente
+Titolo del libro
+Data di prestito
+
+🧠 Logica
+Collegare le tabelle prestiti, utenti e libri
+Filtrare per titolo
+Verificare che il prestito sia ancora attivo
+
+🧾 Query SQL
+
+📌 Nota didattica
+Se il risultato è vuoto, significa che:
+il libro non è attualmente in prestito oppure
+il titolo inserito non esiste
+
+🟣 Punto 5 – Select: elenco degli utenti che hanno letto un libro (ricerca per titolo)
+📌 Consegna (descrizione migliorata)
+
+Scrivere una query SQL che, dato il titolo di un libro, restituisca la lista degli utenti che hanno letto quel libro nel tempo.
+Un utente si considera aver letto il libro se il prestito risulta concluso, cioè se la data di restituzione effettiva non è NULL.
+
+La query deve mostrare:
+Nome dell’utente
+Cognome dell’utente
+Titolo del libro
+Ogni utente deve comparire una sola volta, anche se ha preso in prestito lo stesso libro più volte.
+
+🧠 Logica
+Collegare prestiti, utenti e libri
+Filtrare per titolo
+Considerare solo i prestiti restituiti
+Evitare duplicati

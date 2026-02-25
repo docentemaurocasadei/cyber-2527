@@ -1,0 +1,18 @@
+1)  - INSERT INTO Clienti (Nome, Email, Telefono)
+	  VALUES ('Luca Verdi', 'luca@email.com', '9876543210');
+		
+	- INSERT INTO Prodotti (Nome, Prezzo, Disponibilità)
+	  VALUES ('Tablet', 299.99, 15);
+		  
+		  
+2)	- UPDATE Prodotti
+	  SET Prezzo = 450.00
+	  WHERE Nome = 'Smartphone';
+	  
+3)	- DELETE FROM Clienti
+	  WHERE ID_Cliente = 2;
+	  
+4)  - SELECT Nome, Telefono FROM Clienti;
+
+5)  - SELECT Nome, Prezzo FROM Prodotti
+	  WHERE Prezzo < 500.00;

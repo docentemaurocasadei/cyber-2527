@@ -1,0 +1,12 @@
+Il cliente è un negozio di ricambi per auto
+vende e distribuisce prodotti del mercato automotive alle officine
+ci richiede un applicativo per la gestione degli ordini 
+dovete progettare un modello ER logico per la gestione di:
+- officine
+- prodotti
+- ordini
+- fornitori
+- categorie di prodotti
+- kit di prodotti (ad esempio un kit freni può contenere pastiglie, dischi, pinze, ecc)
+- un prodotto può appartenere ad una sola categoria
+- un prodotto può essere fornito da più fornitori

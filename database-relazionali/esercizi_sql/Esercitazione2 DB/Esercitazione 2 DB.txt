@@ -1,0 +1,17 @@
+ESERCITAZIONI DATABASE 2
+
+1)  Inserire un nuovo cliente
+	
+	- Nome = "Luca Verdi", Email = "luca@email.com", Telefono = "9876543210"
+	
+	Inserire un nuovo prodotto
+	
+	- Nome = "Tablet", Prezzo = 299.99, Disponibilità = 15
+	
+2)	Cambia il prezzo di "Smartphone" a 450.00
+
+3)	Rimuovi il cliente con id 2
+
+4)	Mostra tutti i clienti con il numero di telefono
+
+5)	Mostra tutti i prodotti con prezzo minore di 500

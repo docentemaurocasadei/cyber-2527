@@ -1,0 +1,22 @@
+
+
+1. Tabella brands
+Fondamentale nel settore automotive per distinguere tra ricambi originali (OE) e aftermarket (es. Bosch, Brembo, Magneti Marelli).
+brands
+id: INT (PK)
+name: VARCHAR
+logo_url: VARCHAR (opzionale, per il catalogo web)
+
+2. Tabella order_statuses
+Invece di avere una stringa fissa (VARCHAR) nella tabella orders, usiamo una tabella dedicata. Questo permette di gestire flussi complessi (es: In attesa, Confermato, In preparazione, Spedito, Consegnato, Annullato) e di associare colori o traduzioni per l'interfaccia utente.
+order_statuses
+id: INT (PK)
+name: VARCHAR
+description: TEXT
+
+aggiungere:
+in products
+brand_id: INT (FK su brands.id) — Relazione 1:N: un prodotto, un solo brand
+
+in orders 
+order_status_id: INT (FK su order_statuses.id) — Sostituisce il campo status VARCHAR

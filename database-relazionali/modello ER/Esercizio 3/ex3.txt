@@ -1,0 +1,14 @@
+Esercizio 3: Gestione di un Negozio di Fiori
+Obiettivo: Creare un database per gestire vendite di fiori e clienti.
+
+Requisiti:
+
+Una tabella Fiori con campi: id_fiore (PK), nome, colore, prezzo_unitario.
+Una tabella Clienti con campi: id_cliente (PK), nome, cognome, telefono.
+Una tabella Ordini con campi: id_ordine (PK), id_cliente (FK), data_ordine, totale.
+Una tabella Dettagli_Ordine con campi: id_dettaglio (PK), id_ordine (FK), id_fiore (FK), quantità, prezzo_totale.
+Vincoli:
+
+Un cliente può fare più ordini.
+Un ordine può contenere più tipi di fiori.
+**Un ordine ha dei dati univoci come data di ordine, numero di ordine, stato pagamento etc...

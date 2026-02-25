@@ -1,0 +1,38 @@
+ESERCITAZIONI DATABASE 1
+
+1) Creare un Database chiamato "NegozioOnline"
+
+2) Inserire nel Database "NegozioOnline" le seguenti tabelle con le colonne
+
+- CLIENTI
+	- ID_Cliente (INT, primaria, auto incremento)
+	- Nome (VARCHAR(100))
+	- Email (VARCHAR(100))
+	- Telefono (VARCHAR(20))
+	
+- PRODOTTI
+	- ID_Prodotto (INT, primaria, auto incremento)
+	- Nome (VARCHAR(100))
+	- Prezzo (DECIMAL(10,2))
+	- Disponibilità (INT)
+	
+- ORDINE
+	- ID_Ordine (INT, primaria, auto incremento)
+	- Data_Ordine (DATE)
+	- ID_Cliente (INT, chiave esterna su Clienti)
+	- Totale (DECIMAL(10,2))
+	
+3) Inserire nelle tabelle i seguenti dati:
+
+- CLIENTI
+	- Nome = "Mario Rossi", Email = "mario@email.com", Telefono = "0123456789"
+	- Nome = "Anna Bianchi", Email = "anna@email.com", Telefono = "0987654321"
+	
+- PRODOTTI
+	- Nome = "Laptop", Prezzo = 899.99, Disponibilità = 10
+	- Nome = "Smartphone", Prezzo = 499.99, Disponibilità = 25
+	
+- ORDINE
+	- Data Ordine = "2024-11-01", ID Cliente = 1, Totale = 899.99
+	
+	Verificare la presenza dei dati usando SELECT

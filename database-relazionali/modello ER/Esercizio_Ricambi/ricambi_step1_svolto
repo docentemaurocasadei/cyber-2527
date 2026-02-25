@@ -1,0 +1,80 @@
+
+workshops (Officine)
+id: INT (PK)
+company_name: VARCHAR
+vat_number: VARCHAR
+street_address: VARCHAR (Indirizzo)
+street_number: VARCHAR (Numero civico)
+city: VARCHAR (Comune)
+province: VARCHAR(2) (Provincia)
+phone: VARCHAR
+email: VARCHAR
+
+categories (Categorie Prodotti)
+id: INT (PK)
+name: VARCHAR
+description: TEXT
+
+suppliers (Fornitori)
+id: INT (PK)
+company_name: VARCHAR
+vat_number: VARCHAR
+street_address: VARCHAR (Indirizzo)
+street_number: VARCHAR (Numero civico)
+city: VARCHAR (Comune)
+province: VARCHAR(2) (Provincia)
+phone: VARCHAR
+email: VARCHAR
+
+products (Prodotti)
+id: INT (PK)
+category_id: INT (FK su categories.id)
+sku: VARCHAR
+name: VARCHAR
+sell_price: DECIMAL
+description: TEXT
+stock_quantity: INT (Giacenza attuale)
+
+product_supplier (Relazione Prodotti-Fornitori)
+product_id: INT (FK su products.id)
+supplier_id: INT (FK su suppliers.id)
+supply_cost: DECIMAL
+Nota: Consente a un prodotto di avere più fornitori.
+
+kit (Testata dei Kit)
+id: INT (PK)
+name: VARCHAR
+description: TEXT
+sell_price: DECIMAL
+
+kit_product (Composizione dei Kit)
+kit_id: INT (FK su kit.id)
+product_id: INT (FK su products.id)
+quantity: INT
+Nota: Definisce i componenti (es. pastiglie, dischi) di un kit.
+
+orders (Testata Ordini)
+id: INT (PK)
+workshop_id: INT (FK su workshops.id)
+order_date: DATETIME
+status: TINYINT
+total_amount: DECIMAL 
+//shipping_cost, payment_method, taxes
+
+order_items (Dettaglio righe ordine)
+--id: INT (PK)
+order_id: INT (FK su orders.id)
+product_id: INT (FK su products.id, NULLABLE)
+--kit_id: INT (FK su kit.id, NULLABLE)
+quantity: INT
+unit_price: DECIMAL
+
+Riepilogo Regole di Business applicate:
+Nomenclatura: Tutto in snake_case e tabelle rigorosamente in minuscolo.
+Categorie: Ogni product ha un solo category_id (Relazione 1:N).
+Fornitori: La tabella product_supplier permette la relazione Molti-a-Molti (N:M) tra prodotti e fornitori.
+Kit: La tabella kit_product modella la struttura dei pacchetti prodotti.
+Ordini: La tabella order_items è flessibile e può puntare sia a un singolo product che a un kit preconfigurato.
+
+[FINE]
+

@@ -1,0 +1,12 @@
+Esercizio 2: Gestione di una Palestra
+Obiettivo: Creare un diagramma ER per gestire iscrizioni e abbonamenti in una palestra.
+
+Requisiti:
+
+Una tabella Clienti con campi: id_cliente (PK), nome, cognome, telefono, email.
+Una tabella Abbonamenti con campi: id_abbonamento (PK), tipo (mensile, trimestrale, annuale), prezzo.
+Una tabella Iscrizioni con campi: id_iscrizione (PK), id_cliente (FK), id_abbonamento (FK), data_inizio, data_fine.
+Vincoli:
+
+Ogni cliente può avere un solo abbonamento attivo alla volta.
+Un abbonamento può essere scelto da più clienti.

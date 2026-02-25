@@ -1,0 +1,43 @@
+1)  CREATE DATABASE NegozioOnline
+
+2)  - USE NegozioOnline
+
+    - CREATE TABLE Clienti (
+		ID_Cliente INT PRIMARY KEY AUTO_INCREMENT,
+		Nome VARCHAR(100) NOT NULL,
+		Email VARCHAR(100) UNIQUE,
+		Telefono VARCHAR(20)
+	);
+	
+    - CREATE TABLE Prodotti (
+		ID_Prodotto INT PRIMARY KEY AUTO_INCREMENT,
+		Nome VARCHAR(100) NOT NULL,
+		Prezzo DECIMAL(10, 2) NOT NULL,
+		Disponibilità INT NOT NULL
+	);
+	
+	- CREATE TABLE Ordini (
+		ID_Ordine INT PRIMARY KEY AUTO_INCREMENT,
+		Data_Ordine DATE NOT NULL,
+		ID_Cliente INT,
+		Totale DECIMAL(10, 2),
+		FOREIGN KEY (ID_Cliente) REFERENCES Clienti(ID_Cliente)
+	);
+	
+3)	- INSERT INTO Clienti (Nome, Email, Telefono)
+		VALUES 
+		('Mario Rossi', 'mario@email.com', '0123456789'),
+		('Anna Bianchi', 'anna@email.com', '0987654321');
+	
+	- INSERT INTO Prodotti (Nome, Prezzo, Disponibilità)
+		VALUES
+		('Laptop', 899.99, 10),
+		('Smartphone', 499.99, 25);
+		
+	- INSERT INTO Ordini (Data_Ordine, ID_Cliente, Totale)
+		VALUES
+		('2024-11-01', 1, 899.99);
+		
+	- SELECT * FROM Clienti
+	- SELECT * FROM Prodotti
+	- SELECT * FROM Ordini

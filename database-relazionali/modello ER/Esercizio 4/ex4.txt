@@ -1,0 +1,14 @@
+Esercizio 4: Sistema di E-Commerce
+Obiettivo: Creare un diagramma ER per un e-commerce che gestisce ordini e prodotti.
+
+Requisiti:
+
+Una tabella Clienti con campi: id_cliente (PK), nome, cognome, email, telefono.
+Una tabella Prodotti con campi: id_prodotto (PK), nome_prodotto, categoria, prezzo, quantità_disponibile.
+Una tabella Ordini con campi: id_ordine (PK), id_cliente (FK), data_ordine, totale.
+Una tabella Dettagli_Ordine (per tracciare i prodotti acquistati in ogni ordine) con campi: id_dettaglio (PK), id_ordine (FK), id_prodotto (FK), quantità, prezzo_unitario.
+Vincoli:
+
+Un cliente può effettuare più ordini.
+Un ordine può contenere più prodotti.
+Un prodotto può essere presente in più ordini.

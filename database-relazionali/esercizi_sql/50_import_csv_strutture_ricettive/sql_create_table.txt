@@ -1,0 +1,16 @@
+CREATE TABLE `strutture_ricettive` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,  -- ID univoco per ogni record
+    `tipologia` VARCHAR(255),  -- Tipologia (e.g. COUNTRY HOUSE)
+    `denominazione` VARCHAR(255),  -- Denominazione (e.g. COUNTRY HOUSE COLLEVERDE)
+    `tipo_strada` VARCHAR(255),  -- Tipo di strada (e.g. VIA)
+    `ubicazione` VARCHAR(255),  -- Ubicazione (e.g. GIOVANNI BATTISTA DELLA PORTA)
+    `civico` VARCHAR(10),  -- Numero civico (e.g. 59)
+    `esponente` VARCHAR(255),  -- Esponente (e.g. )
+    `interno` VARCHAR(255),  -- Interno (e.g. )
+    `telefono` VARCHAR(20),  -- Numero di telefono (e.g. 75605879)
+    `cellulare` VARCHAR(20),  -- Numero di cellulare (e.g. )
+    `email` VARCHAR(255),  -- Indirizzo email (e.g. info@colleverdeclub.com)
+    `pec` VARCHAR(255),  -- Indirizzo PEC (e.g. NULL)
+    `sito_web` VARCHAR(255),  -- URL del sito web (e.g. http://www.colleverdeclub.com)
+    `posti_letto` INT  -- Numero di posti letto (e.g. 87)
+);
