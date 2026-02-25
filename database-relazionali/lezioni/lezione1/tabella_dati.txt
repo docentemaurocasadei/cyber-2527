@@ -1,14 +1,48 @@
 clienti
 PK
-id      |nome       |cognome        |codice_fiscale     |citta
-1        Marcello    Ferri           FRRMRC80D03C004N    Ancona
-2        Silvia      Marini          MRNSLV90G45C004O    Fano
-3        Irene       Fabrizi         FBRIRN95L52C004U    Pesaro
+id      |nome       |cognome        |codice_fiscale     |localita_id
+1        Marcello    Ferri           FRRMRC80D03C004N    1
+2        Silvia      Marini          MRNSLV90G45C004O    2
+3        Irene       Fabrizi         FBRIRN95L52C004U    3
+4        Stefano     Carletti        CRLSTF...           4
+5        Giovanni    Fiorini         FRNGVN...           3
+
+localita
+id      |citta      |cap
+1        Ancona      60121
+2        Fano        61032
+3        Pesaro      61121
+4        Pesaro      61122
 
 ordini
 PK                               FK
 id      |data       |importo    |cliente_id
-1        25/02/2026  22.35      |2
-2        24/02/2026  34.20       1
+1        25/02/2026  ***      |2
+2        24/02/2026  ***       1
+
+prodotti
+id      |sku        |nome           |prezzo
+1        GR123       Grissini        2.55
+2        TE001       Caffè in cialde 3.99
+
+ordini_prodotti
+ordine_id   |prodotto_id    |quantita   |prezzo_u      
+2            1               5           2.15           
+2            2               10          3.99       
+
+paga_con_carta
+
+start_transaction()
+                                                <--|
+scrivi_cliente                                      |
+scrivi_ordine                                       |
+scrivi_prodotto1                                    |
+*** -----------------------------------> rollback()|
+scrivi_prodotto2
+attendi_conferma_pagamento
+scarica_giacenza_prodotto1
+scarica_giacenza_prodotto2
+
+commit()
 
 
