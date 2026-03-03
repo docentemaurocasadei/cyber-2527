@@ -2,7 +2,8 @@
     "id": 1,
     "nome": "Marcello",
     "cognome": "Ferri",
-    "codice_fiscale": "FRRMRC80D03C004N"
+    "codice_fiscale": "FRRMRC80D03C004N",
+    "interessi": ["calcio", "musica", "cucina"]
 },
 {
     "id": 2,
