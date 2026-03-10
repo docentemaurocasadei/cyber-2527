@@ -1,0 +1,87 @@
+/*use gestione_corsi;
+#insert into corsisti(nome,cognome,data_nascita,email) values ('Giovanna', 'Marini','2000-05-02', 'giovannamarini@gmail.com');
+SELECT corsi.nome, corsisti.id, corsisti.nome,corsisti.cognome FROM corsi 
+right join corsi_frequentati on corsi_frequentati.corso_id = corsi.id
+right join corsisti on corsi_frequentati.corsista_id = corsisti.id;
+
+#select * from corsisti where telefono is not null;
+select nome,cognome,data_nascita from corsisti where data_nascita between '1990-01-01' and '2000-12-31';
+#trovare tutti i corsisti nati prima del 31/12/1989
+select nome,cognome,data_nascita from corsisti where data_nascita < '1989-12-31';
+#trovare il telefono del corsista che mi ha inviato una mail da mario.rossi@example.com
+select nome,cognome,telefono from corsisti where email ='mario.rossi@example.com';
+select * from corsi where durata_ore=80;
+#tutti i corsi che NON hanno una durata di 80 ore
+select * from corsi where durata_ore!=80;
+select * from corsi where durata_ore<>80;
+
+# aggiungere 3 campi alla tabella corsisti: localita: 	VARCHAR(50), provincia VARCHAR(2), cap VARCHAR(5)
+# aggiornare i dati dei corsisti 
+#Mario Pesaro (PU) 61121
+#Anna Fano (PU) 61032
+#Luca Pesaro (PU) 61122
+#Giovanna Ancona (AN) 60121
+alter table corsisti 
+add column localita varchar(50),
+add column provincia varchar(2),
+add column cap varchar(5);
+
+alter table corsisti add column stato varchar(50);
+alter table corsisti drop column stato;
+
+# inserire un altro corsista di Ancona
+# Martina Trevigiani 10/10/1998 martinatrevigiani@email.it 333.12121212 ANCONA (AN) 60121
+#insert into corsisti(nome,cognome,data_nascita,email,telefono,localita,provincia,cap) values ('Martina', 'Trevigiani','1998-10-10',
+#'martinatrevigiani@email.it','333.12121212','Ancona','AN','60121');
+
+DELETE FROM corsisti WHERE id = 5;
+
+#aprire il terminale, posizionarsi (USE) sul database gestione_corsi e inserire un nuovo corsista
+# Marcello Gennarino 15/5/2002 marcigenna@gmail.com 3351212421 Ancona AN 60121
+/*insert into corsisti(nome,cognome,data_nascita,email,telefono,localita,provincia,cap) values 
+('Marcello', 'Gennarino','2002-05-15', 'marcigenna@gmail.com','3351212421','Ancona','AN','60121');
+
+#successivamente visualizzare tutti i corsisti
+#select * from corsisti;
+
+#operatore in
+#tutti i corsisti in località pesaro o fano
+#select nome,cognome,localita from corsisti where localita IN ('Pesaro', 'Fano');
+*/
+/*
+
+select nome,cognome,localita,data_nascita from corsisti where 
+(localita = 'Ancona' OR localita ='Pesaro') AND data_nascita <= '1995-12-31';
+
+SELECT * FROM gestione_corsi.corsisti WHERE 
+email='mario.rossi@example.com' AND user_password = 'M1';
+
+#sql injection
+SELECT * FROM gestione_corsi.corsisti WHERE 
+email='mario.rossi@example.com' AND user_password = '' OR 1=1; #';
+
+
+
+#select nome, costo, costo * 1.22 as costo_ivato, costo*22/100 as imposta, 300 % costo as resto from corsi;
+
+select row_number() over(order by costo) as numero_riga, id, nome, costo from corsi;
+*/
+
+
+select row_number() over (partition by corsi.id order by corsi.id, corsi_frequentati.data_inizio),
+corsisti.id, corsi_frequentati.data_inizio, corsisti.nome, corsisti.cognome, corsi.nome from corsisti 
+join corsi_frequentati on corsisti.id=corsi_frequentati.corsista_id
+join corsi on corsi.id=corsi_frequentati.corso_id;
+
+#inserire tra i corsisti che frequentano 
+# excel almeno 5 studenti,
+# python almeno 4 studenti
+# javascript 6 studenti
+# Mysql 5 studenti
+
+insert into corsi_frequentati (corso_id, corsista_id, data_inizio) 
+values (1,3,'2026-03-10'),(1,4,'2026-03-10'),(1,5,'2026-03-10'),
+(2,6,'2026-03-10'),(2,4,'2026-03-10'),(2,5,'2026-03-10'),
+(4,1,'2026-03-10'),(4,2,'2026-03-10'),(4,3,'2026-03-10'),(4,4,'2026-03-10'),(4,5,'2026-03-10'),(4,6,'2026-03-10'),
+(3,6,'2026-03-10'),(3,4,'2026-03-10'),(3,5,'2026-03-10');
+
