@@ -85,3 +85,9 @@ values (1,3,'2026-03-10'),(1,4,'2026-03-10'),(1,5,'2026-03-10'),
 (4,1,'2026-03-10'),(4,2,'2026-03-10'),(4,3,'2026-03-10'),(4,4,'2026-03-10'),(4,5,'2026-03-10'),(4,6,'2026-03-10'),
 (3,6,'2026-03-10'),(3,4,'2026-03-10'),(3,5,'2026-03-10');
 
+---------------------------------
+docenti - corsi (molti a molti) = corsi_docenti (nome tabella di relazione)
+corsi - certificazioni 1 a molti (solo 1 certificazione per corso)
+aule - corsi (1 a molti) (una aula può ospitare più corsi, 
+    ma un corso si svolge in un'aula sola)
+
