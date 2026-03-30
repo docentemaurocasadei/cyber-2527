@@ -80,3 +80,5 @@ VALUES ('Corso SQL Avanzato', 20, 200.00, '2026-03-01');
 INSERT INTO corsisti (nome, cognome, data_nascita, email) 
 VALUES ('Luca', 'Bianchi', '1990-03-15', 'luca.bianchi@example.com');
 SELECT * FROM log_operazioni;
+
+

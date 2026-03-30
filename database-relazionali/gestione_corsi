@@ -1,0 +1,203 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict lcneNUlIw9ulOWq1jXbclgW8guF8c50UKqQID8rKMksrJizcc06GodoH2DVcwI1
+
+-- Dumped from database version 18.3
+-- Dumped by pg_dump version 18.3
+
+-- Started on 2026-03-30 13:27:22
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 220 (class 1259 OID 16390)
+-- Name: corsi; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.corsi (
+    id integer NOT NULL,
+    nome character varying(100) NOT NULL,
+    descrizione text,
+    durata_ore integer NOT NULL,
+    costo money NOT NULL,
+    data_inizio date NOT NULL,
+    data_fine date
+);
+
+
+ALTER TABLE public.corsi OWNER TO postgres;
+
+--
+-- TOC entry 223 (class 1259 OID 16413)
+-- Name: corsi_frequentati; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.corsi_frequentati (
+    corso_id integer,
+    corsista_id integer,
+    data_inizio date,
+    data_fine date
+);
+
+
+ALTER TABLE public.corsi_frequentati OWNER TO postgres;
+
+--
+-- TOC entry 219 (class 1259 OID 16389)
+-- Name: corsi_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.corsi ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.corsi_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 222 (class 1259 OID 16403)
+-- Name: corsisti; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.corsisti (
+    id integer NOT NULL,
+    nome character varying(50) NOT NULL,
+    cognome character varying(50) NOT NULL,
+    data_nascita date,
+    email character varying(100),
+    telefono character varying(25),
+    localita character varying(50),
+    provincia character varying(2),
+    cap character varying(5),
+    user_password character varying(255)
+);
+
+
+ALTER TABLE public.corsisti OWNER TO postgres;
+
+--
+-- TOC entry 221 (class 1259 OID 16402)
+-- Name: corsisti_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+ALTER TABLE public.corsisti ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+    SEQUENCE NAME public.corsisti_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
+
+
+--
+-- TOC entry 5019 (class 0 OID 16390)
+-- Dependencies: 220
+-- Data for Name: corsi; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.corsi (id, nome, descrizione, durata_ore, costo, data_inizio, data_fine) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5022 (class 0 OID 16413)
+-- Dependencies: 223
+-- Data for Name: corsi_frequentati; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.corsi_frequentati (corso_id, corsista_id, data_inizio, data_fine) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5021 (class 0 OID 16403)
+-- Dependencies: 222
+-- Data for Name: corsisti; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.corsisti (id, nome, cognome, data_nascita, email, telefono, localita, provincia, cap, user_password) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5028 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: corsi_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.corsi_id_seq', 1, false);
+
+
+--
+-- TOC entry 5029 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: corsisti_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.corsisti_id_seq', 1, false);
+
+
+--
+-- TOC entry 4866 (class 2606 OID 16401)
+-- Name: corsi corsi_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.corsi
+    ADD CONSTRAINT corsi_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4868 (class 2606 OID 16412)
+-- Name: corsisti corsisti_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.corsisti
+    ADD CONSTRAINT corsisti_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 4869 (class 2606 OID 16421)
+-- Name: corsi_frequentati fk_corsista_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.corsi_frequentati
+    ADD CONSTRAINT fk_corsista_id FOREIGN KEY (corsista_id) REFERENCES public.corsisti(id);
+
+
+--
+-- TOC entry 4870 (class 2606 OID 16416)
+-- Name: corsi_frequentati fk_corso_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.corsi_frequentati
+    ADD CONSTRAINT fk_corso_id FOREIGN KEY (corso_id) REFERENCES public.corsi(id);
+
+
+-- Completed on 2026-03-30 13:27:22
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict lcneNUlIw9ulOWq1jXbclgW8guF8c50UKqQID8rKMksrJizcc06GodoH2DVcwI1
+
