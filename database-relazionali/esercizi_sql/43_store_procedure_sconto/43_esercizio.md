@@ -1,17 +1,45 @@
-sercizio: Calcolo dello sconto con Stored Procedure
+# 🧮 Esercizio: Calcolo dello sconto con Stored Procedure
 
-Scrivere una stored procedure in MySQL chiamata calcola_sconto che permetta di calcolare il prezzo finale di un prodotto dopo aver applicato uno sconto percentuale.
+## 📌 Obiettivo
+Creare una stored procedure in MySQL che calcoli il prezzo finale di un prodotto dopo aver applicato uno sconto percentuale.
 
-🔹 Requisiti:
-La procedura deve accettare:
-un parametro di input prezzo (DECIMAL), che rappresenta il prezzo iniziale del prodotto
-un parametro di input sconto (DECIMAL), che rappresenta la percentuale di sconto da applicare
-un parametro di output risultato (DECIMAL), che conterrà il prezzo finale scontato
+---
 
-La procedura deve calcolare il prezzo finale utilizzando la formula:
+## 🔹 Traccia
 
+Scrivere una stored procedure chiamata `calcola_sconto` che:
+
+- accetta un parametro `prezzo` (DECIMAL) → prezzo iniziale
+- accetta un parametro `sconto` (DECIMAL) → percentuale di sconto
+- restituisce un parametro `risultato` (DECIMAL) → prezzo finale scontato
+
+---
+
+## 🧾 Formula da utilizzare
 prezzo finale = prezzo - (prezzo * sconto / 100)
-Dopo aver creato la procedura:
-dichiarare una variabile utente
-richiamare la procedura passando un prezzo di 100 e uno sconto del 20%
-visualizzare il risultato ottenuto
+
+
+---
+
+## ⚙️ Richieste
+
+1. Creare la stored procedure
+2. Dichiarare una variabile utente
+3. Chiamare la procedura con:
+   - prezzo = 100
+   - sconto = 20
+4. Visualizzare il risultato
+
+---
+
+## ▶️ Output atteso
+80.00
+
+---
+
+## 💡 Suggerimento
+
+Utilizzare:
+- `IN` per i parametri di input
+- `OUT` per il parametro di output
+- `CALL` per eseguire la procedura
